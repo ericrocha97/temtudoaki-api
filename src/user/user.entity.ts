@@ -11,6 +11,12 @@ export class User {
   @Column({ length: 100 })
   email: string;
 
-  @Column({ length: 100 })
+  @Column({ length: 255 })
   password: string;
+
+  @Column({ length: 14 })
+  cpf: string;
+
+  @Column({ length: 15 })
+  phone: string;
 }
