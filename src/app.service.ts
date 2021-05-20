@@ -9,7 +9,7 @@ export class AppService {
   getObject(): any {
     const object = {
       id: 1,
-      name: "Eri"
+      name: "Eric"
     }
     return object;
   }
