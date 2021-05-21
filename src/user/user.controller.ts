@@ -6,6 +6,8 @@ import { UserService } from './user.service';
 import { AuthService } from 'src/auth/auth.service';
 import { AuthGuard } from '@nestjs/passport';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { databaseProviders } from 'src/database/database.providers';
+import { userLoginTokenDto } from './dto/user.loginToken.dto';
 
 @Controller('user')
 export class UserController {
@@ -23,6 +25,11 @@ export class UserController {
   @Post('login')
   async login(@Request() req) {
     return this.authService.login(req.user);
+  }
+
+  @Post('login-token')
+  async loginWithToken(@Request() req, @Body() data: userLoginTokenDto) {
+    return this.authService.loginWithToken(data.token);
   }
 
   @UseGuards(JwtAuthGuard)
